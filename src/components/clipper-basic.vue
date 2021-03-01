@@ -28,7 +28,7 @@
             </div>
             <div v-if="corner">
               <div v-for="index in 4" :key="'corner' + index" class="vuejs-clipper-basic__corner" :class="`vuejs-clipper-basic__corner${index}`">
-                <span v-if="index == 1" v-text="posLabel" style="color: black; font-weight: bold; padding-left: 6px; white-space: pre"></span>
+                <span v-if="index == 1" v-text="posLabel" style="color: #f2f2f2; padding-left: 6px"></span>
               </div>
             </div>
             <div v-if="grid" class="vuejs-clipper-basic__grid">
