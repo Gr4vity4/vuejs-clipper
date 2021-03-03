@@ -282,7 +282,7 @@ export default {
     },
     shadow: {
       type: String,
-      default: "rgba(0, 0, 0, 0.2)",
+      default: "rgba(0, 0, 0, 0.1)",
     },
     scale: {
       type: Number,
@@ -340,7 +340,7 @@ export default {
         display,
         padding: `${this.border}px`,
         "background-color": backgroundColor,
-        height: '600px'
+        height: "600px",
       };
     },
     inPadStyle: function () {
@@ -360,8 +360,8 @@ export default {
     },
     objectFit: function () {
       return {
-        objectFit: 'contain',
-      }
+        objectFit: "contain",
+      };
     },
     eptStyle: function () {
       const display = `${this.src ? "none" : "block"} !important`;
