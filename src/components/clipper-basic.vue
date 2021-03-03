@@ -1,14 +1,16 @@
 <template>
   <div class="js-clipper-basic">
+    <span v-text="posLabel" style="color: red; white-space: pre"></span>
     <div class="vuejs-clipper-basic__padding" :style="padStyle">
       <canvas class="vuejs-clipper-basic__stem-canvas" :width="stemArea.width" :height="stemArea.height" />
       <div class="vuejs-clipper-basic__in-pad" :style="inPadStyle">
         <div class="vuejs-clipper-basic__img-wrap" :class="{ vertical: isVertical }">
           <div class="vuejs-clipper-basic__img-scale js-img-scale" :style="scaleStyle">
             <img
+              height="600"
               :src="src"
               class="vuejs-clipper-basic__img js-img"
-              :style="rotateStyle"
+              :style="[rotateStyle, objectFit]"
               :crossorigin="crossOrigin"
               @load="
                 imgLoaded();
@@ -27,9 +29,7 @@
               <div class="vuejs-clipper-basic__drag-inset js-drag-inset" />
             </div>
             <div v-if="corner">
-              <div v-for="index in 4" :key="'corner' + index" class="vuejs-clipper-basic__corner" :class="`vuejs-clipper-basic__corner${index}`">
-                <span v-if="index == 1" v-text="posLabel" style="color: #212121; padding-left: 6px; white-space: pre"></span>
-              </div>
+              <div v-for="index in 4" :key="'corner' + index" class="vuejs-clipper-basic__corner" :class="`vuejs-clipper-basic__corner${index}`"></div>
             </div>
             <div v-if="grid" class="vuejs-clipper-basic__grid">
               <div v-for="index in 4" :key="'gridItem' + index" class="vuejs-clipper-basic__grid-item" />
@@ -282,7 +282,7 @@ export default {
     },
     shadow: {
       type: String,
-      default: "rgba(0, 0, 0, 0.4)",
+      default: "rgba(0, 0, 0, 0.2)",
     },
     scale: {
       type: Number,
@@ -340,6 +340,7 @@ export default {
         display,
         padding: `${this.border}px`,
         "background-color": backgroundColor,
+        height: '600px'
       };
     },
     inPadStyle: function () {
@@ -356,6 +357,11 @@ export default {
       return {
         transform: `rotate(${this.rotate}deg) !important`,
       };
+    },
+    objectFit: function () {
+      return {
+        objectFit: 'contain',
+      }
     },
     eptStyle: function () {
       const display = `${this.src ? "none" : "block"} !important`;
