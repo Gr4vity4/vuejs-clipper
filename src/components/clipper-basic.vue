@@ -4,10 +4,11 @@
     <div class="vuejs-clipper-basic__padding" :style="padStyle">
       <canvas class="vuejs-clipper-basic__stem-canvas" :width="stemArea.width" :height="stemArea.height" />
       <div class="vuejs-clipper-basic__in-pad" :style="inPadStyle">
-        <div class="vuejs-clipper-basic__img-wrap" :class="{ vertical: isVertical }">
+        <div class="vuejs-clipper-basic__img-wrap" :class="{ vertical: isVertical }" style="width: 640px; height: 480px">
           <div class="vuejs-clipper-basic__img-scale js-img-scale" :style="scaleStyle">
             <img
-              height="600"
+              width="640"
+              height="480"
               :src="src"
               class="vuejs-clipper-basic__img js-img"
               :style="[rotateStyle, objectFit]"
@@ -340,17 +341,22 @@ export default {
         display,
         padding: `${this.border}px`,
         "background-color": backgroundColor,
-        height: "600px",
+        width: "640px !important",
+        height: "480px !important",
       };
     },
     inPadStyle: function () {
       return {
         padding: `${this.border}px`,
+        width: "640px !important",
+        height: "480px !important",
       };
     },
     scaleStyle: function () {
       return {
         transform: `scale(${this.scale}) !important`,
+        width: "640px !important",
+        height: "480px !important",
       };
     },
     rotateStyle: function () {
